@@ -2,13 +2,11 @@ package com.schoolPro.examQuestions.service.impl;
 
 import com.schoolPro.examQuestions.model.Question;
 import com.schoolPro.examQuestions.service.QuestionService;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class JavaQuestionService implements QuestionService {
 
-    private final List<Question> questions = new ArrayList<>();
+    private final Set<Question> questions = new HashSet<>();
 
     @Override
     public void addQuestion(Question question) {
@@ -21,12 +19,14 @@ public class JavaQuestionService implements QuestionService {
     }
 
     @Override
-    public List<Question> findAll() {
+    public Set<Question> findAll() {
         return questions;
     }
 
     public Question getRandomQuestion() {
         Random random = new Random();
-        return questions.get(random.nextInt(questions.size()));
+        int index = random.nextInt(questions.size());
+        Object[] array = questions.toArray();
+        return (Question) array[index];
     }
 }

@@ -6,6 +6,7 @@ import com.schoolPro.examQuestions.service.QuestionService;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 public class ExaminerServiceImpl implements ExaminerService {
 
@@ -17,7 +18,7 @@ public class ExaminerServiceImpl implements ExaminerService {
 
     @Override
     public List<Question> getQuestions(int amount) {
-        List<Question> allQuestions = questionService.findAll();
+        Set<Question> allQuestions = questionService.findAll();
         if (allQuestions.size() < amount) {
             throw new IllegalArgumentException("Количество запрашиваемых вопросов превышает доступные!");
         }
