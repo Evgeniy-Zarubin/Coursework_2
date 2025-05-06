@@ -9,8 +9,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
@@ -30,7 +32,7 @@ import static org.mockito.Mockito.when;
         @Test
         @DisplayName("Получение корректного количества вопросов")
         void testGetQuestionsValidAmount() {
-            List<Question> expectedQuestions = new ArrayList<>();
+            Set<Question> expectedQuestions = new HashSet<>();
             expectedQuestions.add(new Question("Вопрос 1", "Ответ 1"));
             expectedQuestions.add(new Question("Вопрос 2", "Ответ 2"));
             when(questionService.findAll()).thenReturn(expectedQuestions);
@@ -42,7 +44,7 @@ import static org.mockito.Mockito.when;
         @Test
         @DisplayName("Получение некорректного количества вопросов")
         void testGetQuestionsInvalidAmount() {
-            List<Question> questions = new ArrayList<>();
+            Set<Question> questions = new HashSet<>();
             questions.add(new Question("Вопрос 1", "Ответ 1"));
             when(questionService.findAll()).thenReturn(questions);
 
